@@ -1,0 +1,793 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Upper_Computer_MainWindow</class>
+ <widget class="QMainWindow" name="Upper_Computer_MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>705</width>
+    <height>520</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Take off!——调试工具</string>
+  </property>
+  <property name="windowIcon">
+   <iconset theme="无人机调试工具">
+    <normaloff>assets/pictures/起飞.png</normaloff>assets/pictures/起飞.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>6</x>
+      <y>0</y>
+      <width>691</width>
+      <height>501</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTabWidget :: pane{
+    border: none;
+	background: transparent;    
+}
+QTabWdget{
+	background-color:transparent;
+}
+</string>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="data_display_tab">
+     <attribute name="title">
+      <string>数据展示</string>
+     </attribute>
+     <widget class="QTableWidget" name="variable_display_tableWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>681</width>
+        <height>461</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgba(255, 255, 255, 180)</string>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::DoubleClicked</set>
+      </property>
+      <property name="showGrid">
+       <bool>true</bool>
+      </property>
+      <attribute name="horizontalHeaderCascadingSectionResizes">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="horizontalHeaderStretchLastSection">
+       <bool>true</bool>
+      </attribute>
+      <row>
+       <property name="text">
+        <string>前进距离</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>前进速度</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>前进角度</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>斜率列表</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>AUX1</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>AUX2</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>AUX3</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>AUX4</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>AUX5</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>AUX6</string>
+       </property>
+      </row>
+      <column>
+       <property name="text">
+        <string>是否接收</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>变量名称</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>变量数值</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>变量备注</string>
+       </property>
+      </column>
+      <item row="0" column="3">
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+      <item row="4" column="3">
+       <property name="text">
+        <string>1000定高；1500定点；2000程控</string>
+       </property>
+      </item>
+      <item row="5" column="3">
+       <property name="text">
+        <string>变为1500起飞，变为1000降落</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>70</y>
+        <width>501</width>
+        <height>311</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>assets/pictures/无人机背景.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <zorder>label</zorder>
+     <zorder>variable_display_tableWidget</zorder>
+    </widget>
+    <widget class="QWidget" name="drone_status_tab">
+     <attribute name="title">
+      <string>飞机状态</string>
+     </attribute>
+     <widget class="QGraphicsView" name="drone_status_graphicsView">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>441</width>
+        <height>381</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="fixed_parameter_tableWidget">
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>10</y>
+        <width>211</width>
+        <height>381</height>
+       </rect>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <row>
+       <property name="text">
+        <string>飞行模式</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>ROL</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>PIT</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>YAW</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>X方向位移</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Y方向位移</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Z方向位移</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>X方向速度</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Y方向速度</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Z方向速度</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>X方向加速度</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Y方向加速度</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>Z方向加速度</string>
+       </property>
+      </row>
+      <column>
+       <property name="text">
+        <string>参数数值</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QComboBox" name="instant_command_comboBox">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>400</y>
+        <width>301</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>切换飞行模式</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>锁浆</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>解锁</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>起飞</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>降落</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>悬浮</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>向前飞行</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>向后飞行</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>向左飞行</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>向右飞行</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>向上飞行</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>向下飞行</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>400</y>
+        <width>55</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>即时命令：</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="first_parameter_lineEdit">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>400</y>
+        <width>71</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="second_parameter_lineEdit_2">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>460</x>
+        <y>400</y>
+        <width>71</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="third_parameter_lineEdit_3">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>400</y>
+        <width>71</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="send_instant_command_pushButton_16">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>430</y>
+        <width>121</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>发送指令</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>assets/pictures/命令下发.png</normaloff>assets/pictures/命令下发.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="one_parameter_comboBox_2">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>400</y>
+        <width>71</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="serial_communication_tab">
+     <attribute name="title">
+      <string>串口通信</string>
+     </attribute>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>661</width>
+        <height>461</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="20,1,90">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout" stretch="20,3,20,5,5,18">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetDefaultConstraint</enum>
+         </property>
+         <item>
+          <spacer name="verticalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="serial_display_checkBox">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>显示接收内容</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="serial_save_pushButton_2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>保存记录</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>assets/pictures/保存.png</normaloff>assets/pictures/保存.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="serial_clear_pushButton_3">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>清除记录</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>assets/pictures/清除数据库.png</normaloff>assets/pictures/清除数据库.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2" stretch="35,1,9">
+         <item>
+          <widget class="QPlainTextEdit" name="serial_all_plainTextEdit"/>
+         </item>
+         <item>
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QPlainTextEdit" name="serial_send_plainTextEdit_3"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="serial_send_pushButton">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>assets/pictures/send.png</normaloff>assets/pictures/send.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>64</width>
+               <height>64</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="socket_communication_tab_3">
+     <attribute name="title">
+      <string>网络通信</string>
+     </attribute>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>661</width>
+        <height>461</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="20,1,90">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_9" stretch="20,3,20,5,5,18">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetDefaultConstraint</enum>
+         </property>
+         <item>
+          <spacer name="verticalSpacer_18">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="socket_display_checkBox_5">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>显示接收内容</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_19">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="socket_save_pushButton_13">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>保存记录</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>assets/pictures/保存.png</normaloff>assets/pictures/保存.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="socket_clear_pushButton_14">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>清除记录</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>assets/pictures/清除数据库.png</normaloff>assets/pictures/清除数据库.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_20">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_10" stretch="35,1,9">
+         <item>
+          <widget class="QPlainTextEdit" name="socket_all_plainTextEdit_9"/>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_21">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_10">
+           <item>
+            <widget class="QPlainTextEdit" name="socket_send_plainTextEdit_10"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="socket_send_pushButton_15">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>assets/pictures/send.png</normaloff>assets/pictures/send.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>64</width>
+               <height>64</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
