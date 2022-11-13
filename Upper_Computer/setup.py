@@ -1,5 +1,5 @@
-from UI.upper_computer import *
-from UI.socket_upper import *
+from socket_communication.upper_computer import *
+from socket_communication.socket_upper import *
 
 
 
