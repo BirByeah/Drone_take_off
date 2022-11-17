@@ -3,7 +3,7 @@ import threading
 import sys
 
 drone_address = "192.168.137.139"
-drone_port = 49903
+drone_port = 9155
 computer_address = "10.11.195.104"
 computer = 5199
 
