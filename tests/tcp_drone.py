@@ -23,14 +23,17 @@ class TCP_Drone:
         
     def receive(self):
         while True:
-            recv_data = self.s.recv(1024).decode("utf-8")
+            recv_data = self.s.recv(1024).decode("utf-8", "ignore")
             print(recv_data)
                
     def deliver(self,
                 context:str):
         while True:
             context = input("Send:")
-            self.s.send(context.encode("utf-8"))
+            try:
+                self.s.send(context.encode("utf-8"))
+            except UnicodeEncodeError:
+                print("Encode error!")
     
 if __name__ == "__main__":
     tcp_drone = TCP_Drone("10.11.195.104", 5199)

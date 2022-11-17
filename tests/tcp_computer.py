@@ -23,7 +23,7 @@ class TCP_Computer:
         
     def receive(self):
         while True:
-            recv_data = self.client.recv(1024).decode("utf-8")
+            recv_data = self.client.recv(1024).decode("utf-8", "ignore")
             if recv_data == "Exit":
                self.deliver("OK, trying to close this connection...")
                self.client.close()
@@ -35,7 +35,10 @@ class TCP_Computer:
                
     def deliver(self,
                 context:str):
-         self.client.send(context.encode("utf-8"))
+        try:
+            self.client.send(context.encode("utf-8"))
+        except UnicodeEncodeError:
+            print("Decode error!")
     
 if __name__ == "__main__":
     tcp_computer = TCP_Computer("", 5199)
